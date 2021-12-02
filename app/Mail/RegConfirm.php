@@ -11,7 +11,7 @@ use Illuminate\Queue\SerializesModels;
 class RegConfirm extends Mailable
 {
     use Queueable, SerializesModels;
-    public $details;
+    // public $details;
 
     /**
      * Create a new message instance.

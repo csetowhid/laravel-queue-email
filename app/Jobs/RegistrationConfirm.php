@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Mail;
 class RegistrationConfirm implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $details;
+    protected $details;
 
     /**
      * Create a new job instance.
