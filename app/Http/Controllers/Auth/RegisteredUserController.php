@@ -50,6 +50,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // dispatch(new RegistrationConfirm($user));
+        Notification::send($user, new RegisteredUserNotification($user));
 
         event(new Registered($user));
 

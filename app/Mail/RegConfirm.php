@@ -12,15 +12,16 @@ class RegConfirm extends Mailable
 {
     use Queueable, SerializesModels;
     // public $details;
+    protected $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        // $this->details = $details;
+        $this->user = $user;
     }
 
     /**
@@ -30,6 +31,6 @@ class RegConfirm extends Mailable
      */
     public function build()
     {
-        return $this->view('email.index');
+        return $this->view('email.index')->with('user', $this->user);
     }
 }

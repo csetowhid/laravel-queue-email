@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\RegConfirm;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -14,16 +15,17 @@ use Illuminate\Support\Facades\Mail;
 class RegistrationConfirm implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $details;
+    // protected $details;
+    private $user;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct(User $user)
     {
-        $this->details = $details;
+        $this->user=$user;
     }
 
     /**
@@ -33,7 +35,7 @@ class RegistrationConfirm implements ShouldQueue
      */
     public function handle()
     {
-        $email = new RegConfirm();
-        Mail::to($this->details['email'])->send($email);
+        // $email = new RegConfirm();
+        // Mail::to($this->user)->send(new RegConfirm($this->user));
     }
 }
